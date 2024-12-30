@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+
+{% block title %}
+SYSTEMCONTROL - Contratos
+{% endblock %}
+
+{% block content %}
+
+<div class="row mb-3">
+    <div class="col-md-6">
+        <form method="get" action="{% url 'contract_list' %}">
+            <div class="input-group">
+                <input type="text" class="form-control" name="name" placeholder="Nome" value="{{ request.GET.name }}">
+                <button type="submit" class="btn btn-primary">
+                    <i class="bi bi-search"></i>
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <div class="col-md-6">
+        <a href="{% url 'contract_create' %}" class="btn btn-success float-end">
+            <i class="bi bi-plus"></i>Novo Contrato
+        </a>
+    </div>
+</div>
+
+<div class="table-responsive">
+    <table class="table table-striped table-bordered">
+        <thead class="thead-dark">
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <!--<th>Data de Nacimento</th>
+                <th>CPF</th>
+                <th>RG</th>
+                <th>Endereço</th>
+                <th>CEP</th>
+                <th>E-mail</th>
+                <th>Telefone</th>-->
+                <th>Serviço</th>
+                <th>Data do Evento</th>
+                <!--<th>Local da Pré</th>
+                <th>Local do Evento</th>
+                <th>Valor Total</th>
+                <th>Valor de Entrada</th>
+                <th>Data de Entrada</th>
+                <th>Valor Restante</th>
+                <th>Data Restante</th>-->
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for contract in contracts %}
+            <tr>
+                <td>{{ contract.id }}</td>
+                <td>{{ contract.name }}</td>
+                <!--<td>{{ contract.date_birth }}</td>
+                <td>{{ contract.cpf }}</td>
+                <td>{{ contract.rg }}</td>
+                <td>{{ contract.adress }}</td>
+                <td>{{ contract.cep }}</td>
+                <td>{{ contract.mailbox }}</td>
+                <td>{{ contract.phone }}</td>-->
+                <td>{{ contract.service }}</td>
+                <td>{{ contract.event_date }}</td>
+                <!--<td>{{ contract.local_pre }}</td>
+                <td>{{ contract.event_local }}</td>
+                <td>{{ contract.total_price }}</td>
+                <td>{{ contract.input_value }}</td>
+                <td>{{ contract.input_date }}</td>
+                <td>{{ contract.residual_value }}</td>
+                <td>{{ contract.residual_date }}</td>-->
+                <td>
+                    <a href="{% url 'contract_detail' contract.id %}" class="btn btn-info btn-sm">
+                        <i class="bi bi-eye"></i>
+                    </a>
+                    <a href="{% url 'contract_update' contract.id %}" class="btn btn-warning btn-sm">
+                        <i class="bi bi-pencil"></i>
+                    </a>
+                    <a href="{% url 'contract_delete' contract.id %}" class="btn btn-danger btn-sm">
+                        <i class="bi bi-trash"></i>
+                    </a>
+                                    
+                    
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% include 'components/_pagination.html' %}
+
+{% endblock %}

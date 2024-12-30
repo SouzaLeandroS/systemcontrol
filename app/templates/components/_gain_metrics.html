@@ -1,0 +1,47 @@
+<div class="card mt-4">
+
+    <div class="card-body">
+
+        <div class="row">
+
+            <div class="col-md-3">
+                <div class="card bg-success">
+                    <div class="card-body">
+                        <h5 class="card-title">Receitas</h5>
+                        <p class="card-text text-white font-weight-bold display-6">R$ {{ result_metrics.total_price_gain }}</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="card bg-danger">
+                    <div class="card-body">
+                        <h5 class="card-title">Despesas</h5>
+                        <p class="card-text text-white font-weight-bold display-6">R$ {{ result_metrics.total_price_outgoing }}</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="card bg-primary">
+                    <div class="card-body">
+                        <h5 class="card-title">Saldo</h5>
+                        <p class="card-text text-white font-weight-bold display-6">R$ {{ result_metrics.total_profit }}</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="card bg-warning">
+                    <div class="card-body">
+                        <h5 class="card-title">Eventos</h5>
+                        <p class="card-text text-white font-weight-bold display-6">{{ task_metrics.total_task }}</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

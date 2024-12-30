@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container mt-4">
+    <h3 class="display-6">Detalhes da Contratos</h3>
+
+    <div class="card">
+        <div class="card-body">
+
+            <h4 class="card-title"><strong>Nome: </strong>{{ object.name }}</h4>
+            <p class="card-text"><strong>Data de Nasc.: </strong>{{ object.date_birth }}</p>
+            <p class="card-text"><strong>CPF: </strong>{{ object.cpf }}</p>
+            <p class="card-text"><strong>RG: </strong>{{ object.rg }}</p>
+            <p class="card-text"><strong>Endereço: </strong>{{ object.adress }}</p>
+            <p class="card-text"><strong>CEP: </strong>{{ object.cep }}</p>
+            <p class="card-text"><strong>E-mail: </strong>{{ object.mailbox }}</p>
+            <p class="card-text"><strong>Telefone: </strong>{{ object.phone }}</p>
+            <p class="card-text"><strong>Serviço: </strong>{{ object.service }}</p>
+            <p class="card-text"><strong>Data do Evento: </strong>{{ object.event_date }}</p>
+            <p class="card-text"><strong>Local da Pre: </strong>{{ object.local_pre }}</p>
+            <p class="card-text"><strong>Local do Evento: </strong>{{ object.event_local }}</p>
+            <p class="card-text"><strong>Valor Total: R$ </strong>{{ object.total_price }}</p>
+            <p class="card-text"><strong>Valor de Entrada: R$ </strong>{{ object.input_value }}</p>
+            <p class="card-text"><strong>Data da Entrada: </strong>{{ object.input_date }}</p>
+            <p class="card-text"><strong>Valor Restante: R$ {{ object.residual_value }}</strong></p>
+            <p class="card-text"><strong>Data Restante: R$ {{ object.date }}</strong></p>
+
+            <p class="card-text">Tem certeza de que deseja gerar o contrato?</p>
+            <form method="post">
+                {% csrf_token %}
+                {{ object.documento }}
+            <button type="submit" class="btn btn-success">Gerar Contrato</button>
+            </form>
+        </div>
+    </div>
+    <a href="{% url 'contract_list' %}" class="btn btn-secondary mt-3">Voltar para Lista de Contratos</a>
+</div>
+{% endblock %}
